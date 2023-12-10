@@ -1,0 +1,31 @@
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, metrics, prometheus, loggers
+  metrics:
+    tags:
+      application: ${spring.application.name}
+    distribution:
+      percentiles-histogram:
+        http:
+          server:
+            requests: true
+  health:
+    mongo:
+      enabled: false
+
+spring:
+  application:
+    name: feed-service
+
+  data:
+    mongodb:
+      #uri: mongodb://catchtable:9T5ywrkDR1@catchtable-mat-db.cluster-cngeukcxnbat.ap-northeast-2.docdb.amazonaws.com:27017/?tls=true&tlsCAFile=global-bundle-dev.pem&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false
+      uri: mongodb://localhost:27017/feed
+      username:
+      password:
+      database: feed
+      host: localhost
+      port: 27017
