@@ -1,0 +1,26 @@
+version: '3.5'
+
+services:
+  mongodb:
+    image: mongo:7.0.4
+    restart: always # container를 실행할 때 항상 이미 수행중이라면 재시작을 수행합니다.
+    container_name: "mongodb-server"
+    environment:    # 환경변수를 정의합니다.
+      - MONGO_DATA_DIR=/data/db
+      - MONGO_LOG_DIR=/dev/null
+      - MONGO_INITDB_DATABASE=feed
+      #- MONGO_INITDB_ROOT_USERNAME=root
+      #- MONGO_INITDB_ROOT_PASSWORD=mongodb
+    # command: mongod
+    ports:
+      - "27017:27017"
+
+    ulimits:
+      memlock: -1
+      nproc: 65535
+      nofile: 250000
+    volumes:
+      #- ./data/mongod.conf::/etc/mongod.conf
+      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+      - ./data/db:/data/db
+

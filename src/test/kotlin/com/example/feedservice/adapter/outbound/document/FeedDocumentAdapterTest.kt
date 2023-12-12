@@ -1,5 +1,6 @@
 package com.example.feedservice.adapter.outbound.document
 
+import com.example.feedservice.adapter.outbound.document.docs.makePageId
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
 import org.springframework.boot.test.context.SpringBootTest

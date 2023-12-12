@@ -23,9 +23,26 @@ spring:
   data:
     mongodb:
       #uri: mongodb://catchtable:9T5ywrkDR1@catchtable-mat-db.cluster-cngeukcxnbat.ap-northeast-2.docdb.amazonaws.com:27017/?tls=true&tlsCAFile=global-bundle-dev.pem&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false
-      uri: mongodb://localhost:27017/feed
+      uri: mongodb://localhost:27017/?retryWrites=false
       username:
       password:
       database: feed
-      host: localhost
-      port: 27017
+      #host: localhost
+      #port: 27017
+
+springdoc:
+  version: '@springdoc.version@'
+  #use-management-port: true
+  show-actuator: true
+  swagger-ui:
+    use-root-path: true
+    path: /swagger-ui.html
+    enabled: true
+  api-docs:
+    path=/api-docs:
+      enabled: true
+
+logging:
+  level:
+    root: info
+

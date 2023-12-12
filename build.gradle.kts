@@ -1,11 +1,14 @@
+import com.adarshr.gradle.testlogger.theme.ThemeType
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
+    // id("java")
     id("org.springframework.boot") version "3.2.0"
     id("io.spring.dependency-management") version "1.1.4"
     kotlin("jvm") version "1.9.20"
     kotlin("plugin.spring") version "1.9.20"
-    id("io.kotest") version "0.4.10"
+    //id("io.kotest") version "0.4.10"
+    id("com.adarshr.test-logger") version "4.0.0"
 }
 
 group = "com.example"
@@ -82,4 +85,65 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+//    testLogging {
+//        showCauses = true
+//        showExceptions = true
+//        showStackTraces = true
+////        showStandardStreams = true
+//        showCauses = true
+////        showExceptions = true
+////        showStackTraces = true
+//////        // exceptionFormat = "full"
+//          events("passed", "skipped", "failed")
+//
+//    }
+}
+
+testlogger {
+    // pick a theme - mocha, standard, plain, mocha-parallel, standard-parallel or plain-parallel
+    theme = ThemeType.MOCHA
+
+    // set to false to disable detailed failure logs
+    showExceptions = true
+
+    // set to false to hide stack traces
+    showStackTraces = true
+
+    // set to true to remove any filtering applied to stack traces
+    showFullStackTraces = false
+
+    // set to false to hide exception causes
+    showCauses = true
+
+    // set threshold in milliseconds to highlight slow tests
+    slowThreshold = 2000
+
+    // displays a breakdown of passes, failures and skips along with total duration
+    showSummary = true
+
+    // set to true to see simple class names
+    showSimpleNames = false
+
+    // set to false to hide passed tests
+    showPassed = true
+
+    // set to false to hide skipped tests
+    showSkipped = true
+
+    // set to false to hide failed tests
+    showFailed = true
+
+    // enable to see standard out and error streams inline with the test results
+    showStandardStreams = false
+
+    // set to false to hide passed standard out and error streams
+    showPassedStandardStreams = true
+
+    // set to false to hide skipped standard out and error streams
+    showSkippedStandardStreams = true
+
+    // set to false to hide failed standard out and error streams
+    showFailedStandardStreams = true
+
+    logLevel = LogLevel.LIFECYCLE
 }

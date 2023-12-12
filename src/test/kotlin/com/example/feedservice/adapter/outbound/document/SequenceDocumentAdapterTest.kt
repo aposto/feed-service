@@ -1,7 +1,6 @@
 package com.example.feedservice.adapter.outbound.document
 
 import io.kotest.core.spec.style.FunSpec
-import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import org.springframework.boot.test.context.SpringBootTest
 
